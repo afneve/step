@@ -8,7 +8,7 @@ var stepTracker = {
         var fitbitAccessToken;
 
         if (!window.location.hash) {
-            window.location.replace('https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228JW3&&redirect_uri=https%3A%2F%2Fafneve.github.io%2Fstep%2F&scope=activity%20social');
+            window.location.replace('https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228JW3&&redirect_uri=https%3A%2F%2Fafneve.github.io%2Fstep%2F&scope=activity%20social%20profile');
             //
         } else {
             var fragmentQueryParameters = {};
