@@ -3,9 +3,9 @@
 var stepTracker = {
     stepsArray : [],
     friendsObject : {},
+    fitbitAccessToken: '',
     init: function(){
         // If user hasn't authed with Fitbit, redirect to Fitbit OAuth Implicit Grant Flow
-        var fitbitAccessToken;
 
         if (!window.location.hash) {
             window.location.replace('https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228JW3&&redirect_uri=https%3A%2F%2Fafneve.github.io%2Fstep%2F&scope=activity%20social%20profile');
@@ -17,14 +17,14 @@ var stepTracker = {
                 function($0, $1, $2, $3) { fragmentQueryParameters[$1] = $3; }
             );
 
-            fitbitAccessToken = fragmentQueryParameters.access_token;
+            stepTracker.fitbitAccessToken = fragmentQueryParameters.access_token;
         }
 
     /*    fetch(
             'https://api.fitbit.com/1/user/-/activities/steps/date/today/7d.json',
         {
             headers: new Headers({
-                'Authorization': 'Bearer ' + fitbitAccessToken
+                'Authorization': 'Bearer ' + stepTracker.fitbitAccessToken
             }),
             mode: 'cors',
             method: 'GET'
@@ -41,7 +41,7 @@ var stepTracker = {
             'https://api.fitbit.com/1/user/-/friends.json',
         {
             headers: new Headers({
-                'Authorization': 'Bearer ' + fitbitAccessToken
+                'Authorization': 'Bearer ' + stepTracker.fitbitAccessToken
             }),
             mode: 'cors',
             method: 'GET'
@@ -61,7 +61,7 @@ var stepTracker = {
             'https://api.fitbit.com/1/user/-/profile.json',
         {
             headers: new Headers({
-                'Authorization': 'Bearer ' + fitbitAccessToken
+                'Authorization': 'Bearer ' + stepTracker.fitbitAccessToken
             }),
             mode: 'cors',
             method: 'GET'
