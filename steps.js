@@ -41,7 +41,7 @@ var stepTracker = {
 
         var d = new Date();
         var n = d.getDay();
-        var daysToDisplay = ;
+        var daysToDisplay = n;
         var stepsForWeek = 0;
 
         stepTracker.stepsArray = steps['activities-steps'];
