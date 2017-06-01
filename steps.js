@@ -75,7 +75,7 @@ var stepTracker = {
 
     processMe: function(me){
         console.log(me);
-    
+    console.log(stepTracker.friendsObject);
         stepTracker.friendsObject.friends.push(me);
     },
 
