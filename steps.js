@@ -28,15 +28,20 @@ var iceAge = {
             method: 'GET'
         }
         ).then(iceAge.processResponse)
+        .then(iceAge.processSteps)
         .catch(function(error) {
             console.log(error);
         });
     },
 
+    processSteps : function(steps) {
+        console.log(steps);
+    },
+
     // Make an API request and graph it
     processResponse : function(res) {
-        console.log(res);
-        console.log(res.json());
+        //console.log(res);
+        //console.log(res.json());
     if (!res.ok) {
         throw new Error('Fitbit API request failed: ' + res);
     }
