@@ -20,7 +20,7 @@ var stepTracker = {
             fitbitAccessToken = fragmentQueryParameters.access_token;
         }
 
-        fetch(
+    /*    fetch(
             'https://api.fitbit.com/1/user/-/activities/steps/date/today/7d.json',
         {
             headers: new Headers({
@@ -33,9 +33,9 @@ var stepTracker = {
         .then(stepTracker.processSteps)
         .catch(function(error) {
             console.log(error);
-        });
+        });*/
 
-
+        
 
         fetch(
             'https://api.fitbit.com/1/user/-/friends.json',
@@ -51,6 +51,26 @@ var stepTracker = {
         .catch(function(error) {
             console.log(error);
         });
+
+        fetch(
+            'https://api.fitbit.com/1/user/-/profile.json',
+        {
+            headers: new Headers({
+                'Authorization': 'Bearer ' + fitbitAccessToken
+            }),
+            mode: 'cors',
+            method: 'GET'
+        }
+        ).then(stepTracker.processResponse)
+        .then(stepTracker.processMe)
+        .catch(function(error) {
+            console.log(error);
+        });
+    },
+
+    processMe: function(me){
+        console.log(me);
+        stepTracker.friendsObject.friends.push(me);
     },
 
     processFriends: function(friends){
