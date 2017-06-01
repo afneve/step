@@ -7,7 +7,7 @@ var stepTracker = {
         var fitbitAccessToken;
 
         if (!window.location.hash) {
-            window.location.replace('https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228JW3&&redirect_uri=consent&scope=activity%20social');
+            window.location.replace('https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228JW3&&redirect_uri=login consent&scope=activity%20social');
             //
         } else {
             var fragmentQueryParameters = {};
