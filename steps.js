@@ -48,10 +48,15 @@ var stepTracker = {
         }
         ).then(stepTracker.processResponse)
         .then(stepTracker.processFriends)
+        .then(stepTracker.getMe)
         .catch(function(error) {
             console.log(error);
         });
 
+        
+    },
+
+    getMe: function(){
         fetch(
             'https://api.fitbit.com/1/user/-/profile.json',
         {
@@ -70,6 +75,7 @@ var stepTracker = {
 
     processMe: function(me){
         console.log(me);
+    
         stepTracker.friendsObject.friends.push(me);
     },
 
