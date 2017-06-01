@@ -36,6 +36,7 @@ var iceAge = {
     // Make an API request and graph it
     processResponse : function(res) {
         console.log(res);
+        console.log(res.json());
     if (!res.ok) {
         throw new Error('Fitbit API request failed: ' + res);
     }
