@@ -2,6 +2,7 @@
 
 var stepTracker = {
     stepsArray : [],
+    friendsObject : {},
     init: function(){
         // If user hasn't authed with Fitbit, redirect to Fitbit OAuth Implicit Grant Flow
         var fitbitAccessToken;
@@ -54,6 +55,7 @@ var stepTracker = {
 
     processFriends: function(friends){
         console.log(friends);
+        stepTracker.friendsObject = friends;
     },
 
     processSteps : function(steps) {
