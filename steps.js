@@ -1,6 +1,6 @@
 "use strict";
 
-var iceAge = {
+var stepTracker = {
     stepsArray : [],
     init: function(){
         // If user hasn't authed with Fitbit, redirect to Fitbit OAuth Implicit Grant Flow
@@ -20,7 +20,7 @@ var iceAge = {
         }
 
         fetch(
-            'https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json',
+            'https://api.fitbit.com/1/user/-/activities/steps/date/today/7d.json',
         {
             headers: new Headers({
                 'Authorization': 'Bearer ' + fitbitAccessToken
@@ -28,8 +28,8 @@ var iceAge = {
             mode: 'cors',
             method: 'GET'
         }
-        ).then(iceAge.processResponse)
-        .then(iceAge.processSteps)
+        ).then(stepTracker.processResponse)
+        .then(stepTracker.processSteps)
         .catch(function(error) {
             console.log(error);
         });
@@ -38,8 +38,8 @@ var iceAge = {
     processSteps : function(steps) {
          console.log(steps);
         console.log(steps['activities-steps']);
-        iceAge.stepsArray = steps['activities-steps'];
-        document.write(iceAge.stepsArray[iceAge.stepsArray.length-1].value);
+        stepTracker.stepsArray = steps['activities-steps'];
+        document.write(stepTracker.stepsArray[stepTracker.stepsArray.length-1].value);
 
     },
 
@@ -63,4 +63,4 @@ var iceAge = {
 
 
 };
-iceAge.init();
+stepTracker.init();
