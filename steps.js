@@ -37,8 +37,8 @@ var iceAge = {
 
     processSteps : function(steps) {
          console.log(steps);
-        console.log(steps.activities-steps);
-        iceAge.stepsArray = steps.activities-steps;
+        console.log(steps['activities-steps']);
+        iceAge.stepsArray = steps['activities-steps'];
         document.write(iceAge.stepsArray[iceAge.stepsArray.length-1].value);
 
     },
