@@ -6,7 +6,8 @@ var iceAge = {
         var fitbitAccessToken;
 
         if (!window.location.hash) {
-            window.location.replace('https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=227H22&redirect_uri=https%3A%2F%2F15359f83.ngrok.io%2F&scope=activity%20nutrition%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight');
+            window.location.replace('https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228JW3');
+            //
         } else {
             var fragmentQueryParameters = {};
             window.location.hash.slice(1).replace(
@@ -18,7 +19,7 @@ var iceAge = {
         }
 
         fetch(
-            'https://api.fitbit.com/1/user/-/activities/heart/date/2016-03-19/1d/1sec/time/21:00/23:00.json',
+            'https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json',
         {
             headers: new Headers({
                 'Authorization': 'Bearer ' + fitbitAccessToken
