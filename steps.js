@@ -1,6 +1,7 @@
 "use strict";
 
 var iceAge = {
+    stepsArray : [],
     init: function(){
         // If user hasn't authed with Fitbit, redirect to Fitbit OAuth Implicit Grant Flow
         var fitbitAccessToken;
@@ -37,8 +38,8 @@ var iceAge = {
     processSteps : function(steps) {
          console.log(steps);
         console.log(steps.activities-steps);
-        var stepsArray = steps.activities-steps;
-        document.write(stepsArray[stepsArray.length-1]);
+        iceAge.stepsArray = steps.activities-steps;
+        document.write(iceAge.stepsArray[iceAge.stepsArray.length-1].value);
 
     },
 
