@@ -33,6 +33,27 @@ var stepTracker = {
         .catch(function(error) {
             console.log(error);
         });
+
+
+
+        fetch(
+            'https://api.fitbit.com/1/user/-/friends.json',
+        {
+            headers: new Headers({
+                'Authorization': 'Bearer ' + fitbitAccessToken
+            }),
+            mode: 'cors',
+            method: 'GET'
+        }
+        ).then(stepTracker.processResponse)
+        .then(stepTracker.processFriends)
+        .catch(function(error) {
+            console.log(error);
+        });
+    },
+
+    processFriends: function(friends){
+        console.log(friends);
     },
 
     processSteps : function(steps) {
@@ -50,7 +71,7 @@ var stepTracker = {
             console.log(stepTracker.stepsArray[i].dateTime);
             stepsForWeek += parseInt(stepTracker.stepsArray[i].value);
         }
-        document.write(stepsForWeek);
+        $('body').html(stepsForWeek);
 
     },
 
@@ -69,9 +90,7 @@ var stepTracker = {
         throw new Error('JSON expected but received ' + contentType);
     }
 }
-
-
-
-
 };
+
+
 stepTracker.init();
