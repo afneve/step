@@ -27,7 +27,7 @@ var iceAge = {
             mode: 'cors',
             method: 'GET'
         }
-        ).then(processResponse)
+        ).then(iceAge.processResponse)
         .catch(function(error) {
             console.log(error);
         });
