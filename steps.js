@@ -47,7 +47,7 @@ var stepTracker = {
         stepTracker.stepsArray = steps['activities-steps'];
 
         for(var i = stepTracker.stepsArray.length - 1; i > stepTracker.stepsArray.length - n; i--){
-            stepsForWeek += stepTracker.stepsArray[i].value;
+            stepsForWeek += parseInt(stepTracker.stepsArray[i].value);
         }
         document.write(stepsForWeek);
 
