@@ -36,7 +36,7 @@ var stepTracker = {
         });*/
 
         
-
+////
         fetch(
             'https://api.fitbit.com/1/user/-/friends.json',
         {
