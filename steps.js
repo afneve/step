@@ -36,10 +36,20 @@ var stepTracker = {
     },
 
     processSteps : function(steps) {
-         console.log(steps);
+        console.log(steps);
         console.log(steps['activities-steps']);
+
+        var d = new Date();
+        var n = d.getDay();
+        var daysToDisplay = ;
+        var stepsForWeek = 0;
+
         stepTracker.stepsArray = steps['activities-steps'];
-        document.write(stepTracker.stepsArray[stepTracker.stepsArray.length-1].value);
+
+        for(var i = stepTracker.stepsArray.length - 1; i > stepTracker.stepsArray.length - n; i--){
+            stepsForWeek += stepTracker.stepsArray[i].value;
+        }
+        document.write(stepsForWeek);
 
     },
 
