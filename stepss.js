@@ -59,6 +59,8 @@ var stepTracker = {
     },
 
     processObject: function(){
+        var html = '';
+
         if(stepTracker.friendsObject.friends[stepTracker.friendsCounter] != undefined){
             fetch(
             'https://api.fitbit.com/1/user/'+ stepTracker.friendsObject.friends[stepTracker.friendsCounter].user.encodedId  +'/activities/steps/date/today/7d.json',
@@ -78,8 +80,17 @@ var stepTracker = {
             });
         }
         else{
-            //$('body').html();
-            console.log(stepTracker.friendsObject);
+            
+            for(var i = 0; i < stepTracker.friendsObject.friends[i].length; i++){
+                if(stepTracker.friendsObject.friends[i].user.hasOwnProperty('steps')){
+                    html += '<div class="user">';
+                    html += '<img src="' + stepTracker.friendsObject.friends[i].user.avatar150 + '"/>';
+                    html += '<div>' + stepTracker.friendsObject.friends[i].user.firstName + '</div>';
+                    html += '<div>' + stepTracker.friendsObject.friends[i].user.steps + '</div>';
+                    html += '</div>';
+                }
+            }
+            $('body').html(html);
         }
     },
 
