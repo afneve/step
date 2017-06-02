@@ -74,6 +74,8 @@ var stepTracker = {
             .then(stepTracker)
             .catch(function(error) {
                 console.log(error);
+                stepTracker.friendsCounter++;
+                stepTracker.processObject();
             });
         }
     },
