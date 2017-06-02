@@ -77,6 +77,10 @@ var stepTracker = {
                 stepTracker.processObject();
             });
         }
+        else{
+            //$('body').html();
+            console.log(stepTracker.friendsObject);
+        }
     },
 
     addSteps: function(steps){
