@@ -4,6 +4,7 @@ var stepTracker = {
     stepsArray : [],
     friendsObject : {},
     fitbitAccessToken: '',
+    friendsCounter: 0,
     init: function(){
         // If user hasn't authed with Fitbit, redirect to Fitbit OAuth Implicit Grant Flow
 
@@ -68,14 +69,53 @@ var stepTracker = {
         }
         ).then(stepTracker.processResponse)
         .then(stepTracker.processMe)
+        .then(processSteps)
         .catch(function(error) {
             console.log(error);
         });
     },
 
+    processObject: function(){
+        if(stepTracker.friendsObject.friends[stepTracker.friendsCounter] != undefined){
+            fetch(
+            'https://api.fitbit.com/1/user/'+ stepTracker.friendsObject.friends[stepTracker.friendsCounter].user.encodedId  +'/activities/steps/date/today/7d.json',
+            {
+                headers: new Headers({
+                    'Authorization': 'Bearer ' + stepTracker.fitbitAccessToken
+                }),
+                mode: 'cors',
+                method: 'GET'
+            }
+            ).then(stepTracker.processResponse)
+            .then(stepTracker.addSteps)
+            .catch(function(error) {
+                console.log(error);
+            });
+        }
+    },
+
+    addSteps: function(steps){
+
+        var d = new Date();
+        var n = d.getDay();
+        var daysToDisplay = n;
+        var stepsForWeek = 0;
+
+        stepTracker.stepsArray = steps['activities-steps'];
+
+        for(var i = stepTracker.stepsArray.length - 1; i >= stepTracker.stepsArray.length - n; i--){
+            console.log(stepTracker.stepsArray[i].dateTime);
+            stepsForWeek += parseInt(stepTracker.stepsArray[i].value);
+        }
+
+        stepTracker.friendsObject.friends[0].user.steps = stepsForWeek;
+        //$('body').html(stepsForWeek);
+
+        stepTracker.friendsCounter++;
+        stepTracker.processObject();
+    },
+
     processMe: function(me){
-        console.log(me);
-    console.log(stepTracker.friendsObject);
         stepTracker.friendsObject.friends.push(me);
     },
 
