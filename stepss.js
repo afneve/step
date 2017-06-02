@@ -71,7 +71,6 @@ var stepTracker = {
             }
             ).then(stepTracker.processResponse)
             .then(stepTracker.addSteps)
-            .then(stepTracker)
             .catch(function(error) {
                 console.log(error);
                 stepTracker.friendsCounter++;
