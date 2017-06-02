@@ -93,7 +93,7 @@ var stepTracker = {
             stepsForWeek += parseInt(stepTracker.stepsArray[i].value);
         }
 
-        stepTracker.friendsObject.friends[0].user.steps = stepsForWeek;
+        stepTracker.friendsObject.friends[stepTracker.friendsCounter].user.steps = stepsForWeek;
         //$('body').html(stepsForWeek);
 
         stepTracker.friendsCounter++;
