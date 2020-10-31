@@ -41,7 +41,7 @@ var sleepTracker = {
         //console.log(res);
         //console.log(res.json());
     if (!res.ok) {
-        throw new Error('Fitbit API request failed: ' + res);
+        throw new Error('Fitbit API request failed: ', res);
     }
  
     var contentType = res.headers.get('content-type')
